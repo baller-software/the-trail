@@ -48,39 +48,39 @@ spec-version: v1
 
 ### P0 — Core Fidelity Requirements
 
-- [ ] Game structure matches the 1971 original's turn-based journey format
+- [x] Game structure matches the 1971 original's turn-based journey format
   - The journey is divided into approximately 12 two-week turns
   - Each turn follows the original's sequence: status display, decision prompt, event resolution, travel progress
   - The route follows the historical landmarks from the 1971 version
 
-- [ ] Player inputs match the original's interaction style
+- [x] Player inputs match the original's interaction style
   - Players respond to numbered prompts by typing a number
   - Players enter dollar amounts for purchases
   - Players type responses for the hunting mechanic
   - No point-and-click or graphical interaction within the game
 
-- [ ] Event types and probabilities follow the 1971 original's documented model
+- [x] Event types and probabilities follow the 1971 original's documented model
   - Random events are drawn from the same categories as the original (illness, weather, equipment, encounters)
   - Event probabilities are calibrated to match documented values where available
   - Any approximations are documented for transparency
 
-- [ ] Game text matches the tone and style of the 1971 original
+- [x] Game text matches the tone and style of the 1971 original
   - All in-game text is uppercase
   - Prompts are terse and functional, not narrative or descriptive
   - Text follows the original's phrasing where documented (e.g., "DO YOU WANT TO EAT" not "Would you like to have a meal?")
 
-- [ ] The hunting mechanic uses the original's speed-typing approach
+- [x] The hunting mechanic uses the original's speed-typing approach
   - The player must type a specific word (e.g., "BANG") as quickly as possible
   - The amount of food obtained is inversely proportional to response time
   - Ammunition is consumed per hunting attempt
 
 ### P1 — Authenticity Details
 
-- [ ] Supply categories and pricing reflect the 1971 original's values
+- [x] Supply categories and pricing reflect the 1971 original's values
   - Item types match what the original offered (oxen, food, ammunition, clothing, miscellaneous supplies)
   - Prices and starting budget match documented values where available
 
-- [ ] Game difficulty and survival odds approximate the original's balance
+- [x] Game difficulty and survival odds approximate the original's balance
   - The game is challenging — reaching Oregon should not be trivially easy
   - Random events create genuine tension and resource pressure
   - The experience should feel comparable to documented accounts of the original's difficulty

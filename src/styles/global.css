@@ -1,0 +1,42 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: var(--text-lg);
+  line-height: 1.4;
+}
+
+body {
+  font-family: var(--font-terminal);
+  background-color: var(--screen-edge);
+  color: var(--color-medium);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Responsive font sizing */
+@media (max-width: 767px) and (min-width: 600px) {
+  html {
+    font-size: var(--text-md);
+  }
+}
+
+@media (max-width: 599px) {
+  html {
+    font-size: var(--text-sm);
+  }
+}

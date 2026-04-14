@@ -1,4 +1,5 @@
 <!-- gspec:spec-sync -->
+
 ## gspec — Living Specification Sync
 
 This project uses **gspec** for living product specifications stored in `gspec/`.

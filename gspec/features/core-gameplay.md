@@ -50,56 +50,56 @@ spec-version: v1
 
 ### P0 — Required for a Complete Game
 
-- [ ] Player can purchase initial supplies (food, ammunition, clothing, oxen, miscellaneous supplies) with a fixed starting budget
+- [x] Player can purchase initial supplies (food, ammunition, clothing, oxen, miscellaneous supplies) with a fixed starting budget
   - Starting budget and item prices reflect the 1971 original's values
   - Player receives feedback on total spent and remaining funds
   - Purchases affect gameplay outcomes throughout the journey
 
-- [ ] Travel proceeds in discrete turns representing time intervals along the trail
+- [x] Travel proceeds in discrete turns representing time intervals along the trail
   - Each turn advances the party a variable distance based on conditions
   - Turn progression displays distance traveled and distance remaining
   - The journey covers named landmarks matching the historical route
 
-- [ ] Player can go hunting to acquire food during travel
+- [x] Player can go hunting to acquire food during travel
   - Hunting uses the original speed-typing mechanic (type a word quickly for better results)
   - Hunting consumes ammunition
   - Food acquired depends on typing speed / accuracy
 
-- [ ] Random events occur during travel based on probability
+- [x] Random events occur during travel based on probability
   - Events include disease, bad weather, broken wagon parts, lost trail, theft, and hostile encounters
   - Event outcomes affect supplies, health, and travel progress
   - Event frequency and severity are calibrated to the original game's probability tables
 
-- [ ] Player encounters river crossings that require a decision
+- [x] Player encounters river crossings that require a decision
   - Options include fording, caulking the wagon and floating, waiting for conditions to improve, or paying for a ferry
   - Each option carries risk proportional to river conditions
   - Failed crossings can result in lost supplies or party member deaths
 
-- [ ] Player reaches fort and landmark stops along the trail
+- [x] Player reaches fort and landmark stops along the trail
   - Forts allow purchasing additional supplies
   - Landmarks provide progress milestones and contextual text
 
-- [ ] Party health and resources are tracked and displayed between turns
+- [x] Party health and resources are tracked and displayed between turns
   - Food is consumed each turn based on ration settings
   - Party members can fall ill and die
   - Running out of critical supplies (food, oxen) creates dire consequences
 
-- [ ] The game ends when the party reaches Oregon or all members die
+- [x] The game ends when the party reaches Oregon or all members die
   - Reaching Oregon displays a success message
   - Party death displays a failure message with cause
   - The player can start a new game after completion
 
 ### P1 — Important for Authentic Feel
 
-- [ ] Player can set travel pace (affecting speed, health, and supply consumption)
+- [x] Player can set travel pace (affecting speed, health, and supply consumption)
   - Faster pace covers more distance but increases risk of illness and supply depletion
   - Slower pace is safer but risks arriving too late in the season
 
-- [ ] Player can set food ration level (filling, meager, bare bones)
+- [x] Player can set food ration level (filling, meager, bare bones)
   - Ration level affects party health and food consumption rate
   - Lower rations increase risk of illness
 
-- [ ] Weather and seasonal changes affect travel conditions
+- [x] Weather and seasonal changes affect travel conditions
   - Later months bring harsher conditions (cold, snow)
   - Weather affects event probabilities and travel speed
 

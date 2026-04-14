@@ -1,0 +1,54 @@
+:root {
+  /* Green Phosphor (P1 theme — default) */
+  --green-bright: #33ff00;
+  --green-medium: #20c200;
+  --green-dim: #0a5c00;
+  --green-glow: #33ff00;
+
+  /* Amber Phosphor (P3 theme) */
+  --amber-bright: #ffb000;
+  --amber-medium: #cc8c00;
+  --amber-dim: #664600;
+  --amber-glow: #ffb000;
+
+  /* Neutral / Screen */
+  --screen-black: #0a0a0a;
+  --screen-dark: #111111;
+  --screen-edge: #050505;
+
+  /* Active theme colors (default: green) */
+  --color-bright: var(--green-bright);
+  --color-medium: var(--green-medium);
+  --color-dim: var(--green-dim);
+  --color-glow: var(--green-glow);
+
+  /* Typography */
+  --font-terminal:
+    'VT323', 'Courier New', 'Courier', 'Lucida Console', monospace;
+  --text-lg: 24px;
+  --text-md: 20px;
+  --text-sm: 16px;
+
+  /* Spacing */
+  --sp-1: 1ch;
+  --sp-2: 2ch;
+  --sp-4: 4ch;
+  --ln-1: 1em;
+  --ln-2: 2em;
+  --ln-3: 3em;
+
+  /* Layout */
+  --terminal-width: 80ch;
+  --terminal-pad: 2ch;
+
+  /* Border */
+  --radius-screen: 4px;
+}
+
+/* Amber theme override */
+[data-theme='amber'] {
+  --color-bright: var(--amber-bright);
+  --color-medium: var(--amber-medium);
+  --color-dim: var(--amber-dim);
+  --color-glow: var(--amber-glow);
+}

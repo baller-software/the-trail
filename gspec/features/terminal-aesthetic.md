@@ -47,42 +47,42 @@ spec-version: v1
 
 ### P0 — Core Visual Identity
 
-- [ ] The game renders inside a terminal frame styled as a CRT monitor
+- [x] The game renders inside a terminal frame styled as a CRT monitor
   - Black background with a subtle bezel border
   - Fixed maximum width matching a classic 80-column terminal
   - Centered on the page with the background extending to fill the viewport
 
-- [ ] All game text displays in a single monospace font
+- [x] All game text displays in a single monospace font
   - The font visually evokes a 1970s terminal character set
   - All text is the same font — no heading/body distinction
   - Text renders in ALL CAPS following the original game's convention
 
-- [ ] Green phosphor theme is the default display mode
+- [x] Green phosphor theme is the default display mode
   - Three brightness levels (bright, medium, dim) for visual hierarchy
   - Text color is a single hue (green) at varying brightness — no other colors
   - Background is near-black, not pure black
 
-- [ ] Amber phosphor theme is available as an alternative
+- [x] Amber phosphor theme is available as an alternative
   - Same three-brightness-level system in amber tones
   - Player can switch between green and amber themes
   - Theme preference persists across sessions
 
-- [ ] Phosphor glow effect on text simulates CRT bloom
+- [x] Phosphor glow effect on text simulates CRT bloom
   - Subtle text-shadow in the active phosphor color
   - Small radius to avoid visual noise
 
 ### P1 — Enhanced CRT Feel
 
-- [ ] Scanline overlay simulates a CRT display
+- [x] Scanline overlay simulates a CRT display
   - Semi-transparent horizontal lines across the terminal
   - Subtle enough to not impair readability
   - Does not interfere with text selection or input
 
-- [ ] Screen curvature effect adds depth to the terminal frame
+- [x] Screen curvature effect adds depth to the terminal frame
   - Vignette darkening at screen edges
   - Creates the impression of a curved glass surface
 
-- [ ] Optional typewriter text rendering simulates terminal print speed
+- [x] Optional typewriter text rendering simulates terminal print speed
   - Text appears character-by-character at a configurable rate
   - Skippable via keypress so it doesn't frustrate repeat players
   - Respects reduced-motion accessibility preferences

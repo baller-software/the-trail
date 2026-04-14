@@ -45,23 +45,23 @@ spec-version: v1
 
 ### P1 — Core Onboarding
 
-- [ ] A new game begins with introductory text displayed in the terminal
+- [x] A new game begins with introductory text displayed in the terminal
   - The text explains the journey premise (who you are, where you're going, when, and why)
   - The text is presented in the same terminal style as all other game text (uppercase, monospace, phosphor-colored)
   - The introduction fits on approximately one screen of terminal output
 
-- [ ] Basic gameplay instructions are presented before the first player decision
+- [x] Basic gameplay instructions are presented before the first player decision
   - The player understands what resources they will manage (food, ammunition, clothing, oxen, miscellaneous supplies)
   - The player understands the basic structure (travel in turns, make decisions, respond to events)
   - Instructions are terse and functional, matching the 1971 original's style
 
-- [ ] The player can proceed from the introduction to gameplay with a simple input
+- [x] The player can proceed from the introduction to gameplay with a simple input
   - A prompt (e.g., "PRESS ENTER TO BEGIN") signals the transition from intro to gameplay
   - No multi-step onboarding flow — one screen of text, then play
 
 ### P1 — Authenticity
 
-- [ ] Introduction text follows the documented phrasing of the 1971 original where available
+- [x] Introduction text follows the documented phrasing of the 1971 original where available
   - Cross-referenced against published source code and historical accounts
   - Any deviations from the original text are noted internally for transparency
 
