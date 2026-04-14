@@ -23,15 +23,16 @@ describe('SetupPhase', () => {
     phase: 'setup' as const,
   }
 
-  it('shows oxen purchasing prompt first', () => {
+  it('shows store layout with inventory table', () => {
     render(
       <GameProvider initialState={setupState}>
         <SetupWithOutput />
       </GameProvider>,
     )
-    expect(
-      screen.getByText(/HOW MUCH DO YOU WANT TO SPEND ON YOUR OXEN TEAM/),
-    ).toBeInTheDocument()
+    expect(screen.getByText('INDEPENDENCE_MO')).toBeInTheDocument()
+    expect(screen.getByText('OXEN')).toBeInTheDocument()
+    expect(screen.getByText('FOOD')).toBeInTheDocument()
+    expect(screen.getByText('AMMUNITION')).toBeInTheDocument()
   })
 
   it('rejects oxen purchase below $200', async () => {
@@ -46,11 +47,11 @@ describe('SetupPhase', () => {
     await user.type(input, '100{enter}')
 
     expect(
-      screen.getByText('YOU MUST SPEND AT LEAST $200 ON OXEN.'),
+      screen.getByText(/YOU MUST SPEND AT LEAST \$200 ON OXEN/),
     ).toBeInTheDocument()
   })
 
-  it('advances to food prompt after valid oxen purchase', async () => {
+  it('advances to food after valid oxen purchase', async () => {
     const user = userEvent.setup()
     render(
       <GameProvider initialState={setupState}>
@@ -61,9 +62,7 @@ describe('SetupPhase', () => {
     const input = screen.getByLabelText('Enter amount for oxen')
     await user.type(input, '200{enter}')
 
-    expect(
-      screen.getByText(/HOW MUCH DO YOU WANT TO SPEND ON FOOD/),
-    ).toBeInTheDocument()
+    expect(screen.getByLabelText('Enter amount for food')).toBeInTheDocument()
   })
 
   it('rejects purchases exceeding remaining budget', async () => {

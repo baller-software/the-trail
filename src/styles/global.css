@@ -15,17 +15,28 @@ html {
 
 body {
   font-family: var(--font-terminal);
-  background-color: var(--screen-edge);
+  background-color: var(--screen-black);
   color: var(--color-medium);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 #root {
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--screen-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-medium);
 }
 
 /* Responsive font sizing */

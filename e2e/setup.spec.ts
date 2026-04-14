@@ -6,33 +6,37 @@ async function skipTypewriter(page: Page) {
   await page.waitForTimeout(200)
 }
 
-test('supply purchasing flow works end-to-end', async ({ page }) => {
+async function startGame(page: Page) {
   await page.goto('/')
+  await page.getByText('[ BOOT SYSTEM ]').first().click()
   await skipTypewriter(page)
 
-  // Skip intro
   const introInput = page.getByRole('textbox', {
     name: 'Press Enter to continue',
   })
   await introInput.press('Enter')
   await skipTypewriter(page)
+}
+
+test('supply purchasing flow works end-to-end', async ({ page }) => {
+  await startGame(page)
+
+  // Should see store layout
+  await expect(page.locator('body')).toContainText('INDEPENDENCE_MO')
 
   // Buy oxen
-  await expect(page.locator('body')).toContainText('OXEN TEAM')
-  const input = page.getByRole('textbox', { name: /amount for oxen/i })
-  await input.fill('200')
-  await input.press('Enter')
+  const oxenInput = page.getByRole('textbox', { name: /amount for oxen/i })
+  await oxenInput.fill('200')
+  await oxenInput.press('Enter')
   await skipTypewriter(page)
 
   // Buy food
-  await expect(page.locator('body')).toContainText('SPEND ON FOOD')
   const foodInput = page.getByRole('textbox', { name: /amount for food/i })
   await foodInput.fill('100')
   await foodInput.press('Enter')
   await skipTypewriter(page)
 
   // Buy ammunition
-  await expect(page.locator('body')).toContainText('AMMUNITION')
   const ammoInput = page.getByRole('textbox', {
     name: /amount for ammunition/i,
   })
@@ -41,7 +45,6 @@ test('supply purchasing flow works end-to-end', async ({ page }) => {
   await skipTypewriter(page)
 
   // Buy clothing
-  await expect(page.locator('body')).toContainText('CLOTHING')
   const clothingInput = page.getByRole('textbox', {
     name: /amount for clothing/i,
   })
@@ -50,13 +53,12 @@ test('supply purchasing flow works end-to-end', async ({ page }) => {
   await skipTypewriter(page)
 
   // Buy misc
-  await expect(page.locator('body')).toContainText('MISCELLANEOUS')
   const miscInput = page.getByRole('textbox', { name: /amount for misc/i })
   await miscInput.fill('100')
   await miscInput.press('Enter')
   await skipTypewriter(page)
 
-  // Should show summary and journey beginning
+  // Should show journey beginning
   await expect(page.locator('body')).toContainText('YOUR JOURNEY BEGINS')
 
   // Press Enter to start traveling
@@ -66,6 +68,6 @@ test('supply purchasing flow works end-to-end', async ({ page }) => {
   await beginInput.press('Enter')
   await skipTypewriter(page)
 
-  // Should now be in travel phase with status display
-  await expect(page.locator('body')).toContainText('MILES TRAVELED')
+  // Should now be in travel phase with status panels
+  await expect(page.locator('body')).toContainText('PARTY_STATUS')
 })

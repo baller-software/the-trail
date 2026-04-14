@@ -8,6 +8,7 @@ async function skipTypewriter(page: Page) {
 
 async function navigateToTravel(page: Page) {
   await page.goto('/')
+  await page.getByText('[ BOOT SYSTEM ]').first().click()
   await skipTypewriter(page)
 
   // Skip intro

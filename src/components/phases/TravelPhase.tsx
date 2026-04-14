@@ -1,11 +1,13 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
 import { TerminalInput } from '../TerminalInput'
-import { getStatusLines } from '../StatusDisplay'
+import { StatusDisplay } from '../StatusDisplay'
 import { useGameState } from '../../hooks/useGameState'
 import { useGameDispatch } from '../../hooks/useGameDispatch'
 import { LANDMARKS } from '../../data/landmarks'
-import { TRAVEL_OPTIONS, PACE_OPTIONS, RATION_OPTIONS } from '../../data/text'
+import { PACE_OPTIONS, RATION_OPTIONS } from '../../data/text'
 import type { TravelPace, RationLevel } from '../../engine/types'
+import layoutStyles from '../../styles/game-layout.module.css'
+import crtStyles from '../../styles/crt-effects.module.css'
 
 type TravelMode = 'main' | 'pace' | 'rations'
 
@@ -25,38 +27,28 @@ export function TravelPhase() {
   const state = useGameState()
   const dispatch = useGameDispatch()
   const [mode, setMode] = useState<TravelMode>('main')
-  const hasShownStatus = useRef(false)
+  const hasShownLandmark = useRef(false)
+
+  const currentLandmark = LANDMARKS[state.currentLandmarkIndex]
 
   useEffect(() => {
-    if (!hasShownStatus.current) {
-      hasShownStatus.current = true
-
-      const lines = getStatusLines(state)
-
-      // Check if we just arrived at a landmark
-      const currentLandmark = LANDMARKS[state.currentLandmarkIndex]
-      if (state.turnNumber > 0 && currentLandmark.type === 'landmark') {
-        lines.unshift(
+    if (
+      !hasShownLandmark.current &&
+      state.turnNumber > 0 &&
+      currentLandmark.type === 'landmark' &&
+      state.currentLandmarkIndex > 0
+    ) {
+      hasShownLandmark.current = true
+      dispatch({
+        type: 'APPEND_OUTPUT',
+        payload: [
           { text: '', brightness: 'medium' },
           { text: currentLandmark.description, brightness: 'bright' },
           { text: '', brightness: 'medium' },
-        )
-      }
-
-      lines.push(
-        { text: '', brightness: 'medium' },
-        { text: 'DO YOU WANT TO:', brightness: 'medium' },
-        ...TRAVEL_OPTIONS.map((t) => ({
-          text: t,
-          brightness: 'medium' as const,
-        })),
-        { text: '  4. CHANGE PACE', brightness: 'medium' },
-        { text: '  5. CHANGE RATIONS', brightness: 'medium' },
-      )
-
-      dispatch({ type: 'APPEND_OUTPUT', payload: lines })
+        ],
+      })
     }
-  }, [state, dispatch])
+  }, [state.turnNumber, currentLandmark, state.currentLandmarkIndex, dispatch])
 
   const handleMainInput = useCallback(
     (value: string) => {
@@ -67,8 +59,7 @@ export function TravelPhase() {
 
       switch (value) {
         case '1': {
-          // Continue on trail
-          hasShownStatus.current = false
+          hasShownLandmark.current = false
           dispatch({
             type: 'TRAVEL',
             payload: { randomSeed: Math.random() },
@@ -76,28 +67,22 @@ export function TravelPhase() {
           break
         }
         case '2': {
-          // Rest
-          hasShownStatus.current = false
+          hasShownLandmark.current = false
           dispatch({ type: 'REST' })
           dispatch({
             type: 'APPEND_OUTPUT',
             payload: [
               { text: '', brightness: 'medium' },
-              {
-                text: 'YOU REST FOR TWO WEEKS.',
-                brightness: 'medium',
-              },
+              { text: 'YOU REST FOR TWO WEEKS.', brightness: 'medium' },
             ],
           })
           break
         }
         case '3': {
-          // Go hunting
           dispatch({ type: 'START_HUNT' })
           break
         }
         case '4': {
-          // Change pace
           setMode('pace')
           dispatch({
             type: 'APPEND_OUTPUT',
@@ -113,7 +98,6 @@ export function TravelPhase() {
           break
         }
         case '5': {
-          // Change rations
           setMode('rations')
           dispatch({
             type: 'APPEND_OUTPUT',
@@ -163,7 +147,6 @@ export function TravelPhase() {
         },
       })
       setMode('main')
-      hasShownStatus.current = false
     },
     [dispatch],
   )
@@ -190,7 +173,6 @@ export function TravelPhase() {
         },
       })
       setMode('main')
-      hasShownStatus.current = false
     },
     [dispatch],
   )
@@ -202,5 +184,42 @@ export function TravelPhase() {
         ? handleRationsInput
         : handleMainInput
 
-  return <TerminalInput onSubmit={handler} ariaLabel="Enter your choice" />
+  return (
+    <>
+      {/* Location header */}
+      <div className={layoutStyles.locationHeader}>
+        <div>
+          <div className={layoutStyles.locationSub}>
+            LOC://{currentLandmark.name.replace(/ /g, '_')}
+          </div>
+          <h1 className={`${layoutStyles.locationName} ${crtStyles.glow}`}>
+            {currentLandmark.name}
+          </h1>
+        </div>
+        <div className={layoutStyles.locationMeta}>
+          <p>TURN: {state.turnNumber}</p>
+          <p>WEATHER: {state.weather.toUpperCase()}</p>
+        </div>
+      </div>
+
+      <StatusDisplay />
+
+      {mode === 'main' && (
+        <div className={layoutStyles.panel} style={{ marginBottom: '1rem' }}>
+          <div className={layoutStyles.panelTitle}>AVAILABLE_ACTIONS:</div>
+          <div
+            style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}
+          >
+            <span>{'  '}1. CONTINUE ON THE TRAIL</span>
+            <span>{'  '}2. STOP AND REST</span>
+            <span>{'  '}3. GO HUNTING</span>
+            <span>{'  '}4. CHANGE PACE</span>
+            <span>{'  '}5. CHANGE RATIONS</span>
+          </div>
+        </div>
+      )}
+
+      <TerminalInput onSubmit={handler} ariaLabel="Enter your choice" />
+    </>
+  )
 }

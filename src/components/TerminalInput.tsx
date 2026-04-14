@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, type KeyboardEvent } from 'react'
 import crtStyles from '../styles/crt-effects.module.css'
+import layoutStyles from '../styles/game-layout.module.css'
 
 interface TerminalInputProps {
   prompt?: string
@@ -35,38 +36,22 @@ export function TerminalInput({
   if (disabled) return null
 
   return (
-    <div
-      className={crtStyles.glow}
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        color: 'var(--color-bright)',
-      }}
-    >
-      <span aria-hidden="true">{prompt}</span>
-      <input
-        ref={inputRef}
-        type="text"
-        value={value}
-        onChange={(e) => setValue(e.target.value.toUpperCase())}
-        onKeyDown={handleKeyDown}
-        aria-label={ariaLabel}
-        autoComplete="off"
-        spellCheck={false}
-        style={{
-          background: 'transparent',
-          border: 'none',
-          outline: 'none',
-          color: 'var(--color-bright)',
-          font: 'inherit',
-          fontSize: 'inherit',
-          lineHeight: 'inherit',
-          width: '100%',
-          caretColor: 'var(--color-bright)',
-          caretShape: 'block',
-          padding: 0,
-        }}
-      />
+    <div className={layoutStyles.promptArea}>
+      <div className={`${layoutStyles.promptText} ${crtStyles.glow}`}>
+        <span aria-hidden="true">{prompt}</span>
+        <input
+          ref={inputRef}
+          type="text"
+          value={value}
+          onChange={(e) => setValue(e.target.value.toUpperCase())}
+          onKeyDown={handleKeyDown}
+          aria-label={ariaLabel}
+          autoComplete="off"
+          spellCheck={false}
+          className={layoutStyles.promptInput}
+        />
+        <span className={crtStyles.blinkingCursor} />
+      </div>
     </div>
   )
 }

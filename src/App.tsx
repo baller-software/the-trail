@@ -1,5 +1,6 @@
-import { useEffect } from 'react'
-import { TerminalScreen } from './components/TerminalScreen'
+import { useState, useEffect, useCallback } from 'react'
+import { LandingPage } from './components/LandingPage'
+import { GameLayout } from './components/GameLayout'
 import { TerminalOutput } from './components/TerminalOutput'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import { GamePhaseRenderer } from './components/GamePhaseRenderer'
@@ -13,7 +14,6 @@ function GameUI() {
   const { theme, toggleTheme } = useTheme()
   const { visibleLines, isAnimating, skip } = useTypewriter(state.output)
 
-  // Skip typewriter on any keypress
   useEffect(() => {
     if (!isAnimating) return
     const handleKey = () => skip()
@@ -22,14 +22,31 @@ function GameUI() {
   }, [isAnimating, skip])
 
   return (
-    <TerminalScreen theme={theme} onToggleTheme={toggleTheme}>
+    <GameLayout theme={theme} onToggleTheme={toggleTheme}>
       <TerminalOutput lines={visibleLines} />
       <GamePhaseRenderer />
-    </TerminalScreen>
+    </GameLayout>
   )
 }
 
 function App() {
+  const [screen, setScreen] = useState<'landing' | 'game'>('landing')
+  const { theme, toggleTheme } = useTheme()
+
+  const handleStart = useCallback(() => {
+    setScreen('game')
+  }, [])
+
+  if (screen === 'landing') {
+    return (
+      <LandingPage
+        onStart={handleStart}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
+    )
+  }
+
   return (
     <ErrorBoundary>
       <GameProvider>

@@ -1,0 +1,409 @@
+.header {
+  background-color: var(--screen-black);
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--color-medium) 20%, transparent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 50;
+  padding: 0 1rem;
+}
+
+.headerInner {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-bright);
+  letter-spacing: -0.05em;
+}
+
+.nav {
+  display: flex;
+  gap: 3rem;
+}
+
+.navLink {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-medium);
+  opacity: 0.7;
+  text-decoration: none;
+  background: none;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+  transition: all 75ms;
+}
+
+.navLink:hover {
+  background-color: var(--color-bright);
+  color: var(--screen-black);
+}
+
+.navLinkActive {
+  composes: navLink;
+  color: var(--color-bright);
+  opacity: 1;
+  border-bottom: 2px solid var(--color-bright);
+  padding-bottom: 0.25rem;
+}
+
+.bootButton {
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-medium);
+  border: 1px solid var(--color-medium);
+  background: none;
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+  transition: all 100ms;
+}
+
+.bootButton:hover {
+  background-color: var(--color-bright);
+  color: var(--screen-black);
+}
+
+.bootButton:active {
+  transform: scale(0.95);
+}
+
+.container {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  border-left: 2px solid
+    color-mix(in srgb, var(--color-medium) 10%, transparent);
+  border-right: 2px solid
+    color-mix(in srgb, var(--color-medium) 10%, transparent);
+  padding: 10rem 4rem 8rem;
+  min-height: 100vh;
+}
+
+.hero {
+  margin-bottom: 8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.asciiArt {
+  white-space: pre;
+  line-height: 1;
+  font-size: clamp(8px, 1.5vw, 12px);
+  color: var(--color-medium);
+  margin-bottom: 3rem;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+  margin-bottom: 1.5rem;
+  color: var(--color-bright);
+}
+
+.heroSubtitle {
+  font-size: 1.3rem;
+  margin-bottom: 4rem;
+  max-width: 80ch;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+.ctaButton {
+  background: transparent;
+  border: 2px solid var(--color-bright);
+  color: var(--color-bright);
+  padding: 1.5rem 4rem;
+  font-size: 1.5rem;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: all 100ms;
+}
+
+.ctaButton:hover {
+  background-color: var(--color-bright);
+  color: var(--screen-black);
+}
+
+.ctaButton:active {
+  transform: scale(0.95);
+}
+
+.divider {
+  margin-bottom: 6rem;
+  opacity: 0.3;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.missionSection {
+  margin-bottom: 8rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.missionLabel {
+  border-left: 4px solid var(--color-bright);
+  padding-left: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.missionTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-bright);
+}
+
+.missionId {
+  font-size: 1rem;
+  opacity: 0.6;
+  margin-top: 0.5rem;
+}
+
+.missionStatus {
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  opacity: 0.4;
+}
+
+.missionBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.missionText {
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
+.missionTextDim {
+  composes: missionText;
+  opacity: 0.8;
+}
+
+.featuresSection {
+  margin-bottom: 8rem;
+}
+
+.featuresTitle {
+  font-size: 1.2rem;
+  margin-bottom: 4rem;
+  color: var(--color-bright);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem;
+}
+
+.featureCard {
+  border: 1px solid color-mix(in srgb, var(--color-medium) 10%, transparent);
+  padding: 1.5rem;
+  transition: background-color 200ms;
+}
+
+.featureCard:hover {
+  background-color: color-mix(in srgb, var(--color-medium) 5%, transparent);
+}
+
+.featureCardTitle {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--color-bright);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.featureCardBody {
+  opacity: 0.7;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.previewSection {
+  margin-bottom: 8rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.previewWindow {
+  background-color: var(--screen-dark);
+  border: 1px solid color-mix(in srgb, var(--color-medium) 30%, transparent);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.previewHeader {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--color-medium) 30%, transparent);
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.previewContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1.1rem;
+  flex-grow: 1;
+}
+
+.previewBright {
+  color: var(--color-bright);
+}
+
+.previewQuote {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: var(--screen-black);
+  border: 1px solid color-mix(in srgb, var(--color-medium) 10%, transparent);
+  opacity: 0.8;
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.ctaSection {
+  text-align: center;
+  padding: 6rem 0;
+  border: 2px solid color-mix(in srgb, var(--color-bright) 20%, transparent);
+  background-color: color-mix(in srgb, var(--screen-dark) 50%, transparent);
+}
+
+.ctaSectionTitle {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: bold;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-bright);
+}
+
+.ctaPrompt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 3rem;
+  color: var(--color-bright);
+}
+
+.ctaHint {
+  margin-top: 4rem;
+  font-size: 0.9rem;
+  opacity: 0.5;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+}
+
+.footer {
+  background-color: var(--screen-dark);
+  border-top: 1px solid color-mix(in srgb, var(--color-medium) 30%, transparent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 50;
+  padding: 0.5rem 1rem;
+}
+
+.footerInner {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 2rem;
+}
+
+.footerLink {
+  color: var(--color-dim);
+  text-decoration: none;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.footerLink:hover {
+  color: var(--color-bright);
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 8rem 1.5rem 6rem;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .missionSection {
+    grid-template-columns: 1fr;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .previewSection {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+}
