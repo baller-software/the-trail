@@ -35,13 +35,15 @@ const PHASE_NAV: Record<string, string> = {
 interface GameLayoutProps {
   theme: Theme
   onToggleTheme: () => void
-  children: ReactNode
+  narrative: ReactNode
+  dashboard: ReactNode
 }
 
 export function GameLayout({
   theme,
   onToggleTheme,
-  children,
+  narrative,
+  dashboard,
 }: GameLayoutProps) {
   const state = useGameState()
   const currentLandmark = LANDMARKS[state.currentLandmarkIndex]
@@ -92,7 +94,16 @@ export function GameLayout({
         </div>
       </header>
 
-      <main className={styles.main}>{children}</main>
+      <div className={styles.body}>
+        {/* Left column: narrative terminal */}
+        <div className={styles.narrative}>
+          <div className={styles.narrativeTitle}>SYSTEM_LOG</div>
+          {narrative}
+        </div>
+
+        {/* Right column: dashboard */}
+        <div className={styles.dashboard}>{dashboard}</div>
+      </div>
 
       <footer className={styles.footer}>
         <div style={{ opacity: 0.6 }}>(C) 1971 MECC — SIMULATION_ACTIVE</div>

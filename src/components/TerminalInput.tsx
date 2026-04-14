@@ -8,6 +8,7 @@ interface TerminalInputProps {
   disabled?: boolean
   ariaLabel?: string
   allowEmpty?: boolean
+  variant?: 'dashboard' | 'narrative'
 }
 
 export function TerminalInput({
@@ -16,6 +17,7 @@ export function TerminalInput({
   disabled = false,
   ariaLabel = 'Enter your response',
   allowEmpty = false,
+  variant = 'dashboard',
 }: TerminalInputProps) {
   const [value, setValue] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
@@ -35,9 +37,18 @@ export function TerminalInput({
 
   if (disabled) return null
 
+  const wrapperClass =
+    variant === 'dashboard'
+      ? layoutStyles.dashboardPrompt
+      : layoutStyles.promptArea
+  const textClass =
+    variant === 'dashboard'
+      ? layoutStyles.dashboardPromptText
+      : layoutStyles.promptText
+
   return (
-    <div className={layoutStyles.promptArea}>
-      <div className={`${layoutStyles.promptText} ${crtStyles.glow}`}>
+    <div className={wrapperClass}>
+      <div className={`${textClass} ${crtStyles.glow}`}>
         <span aria-hidden="true">{prompt}</span>
         <input
           ref={inputRef}

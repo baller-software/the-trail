@@ -46,18 +46,58 @@
   color: var(--color-dim);
 }
 
-.main {
-  padding: 4.5rem 2rem 3rem;
-  min-height: 100vh;
-  max-width: 1200px;
-  margin: 0 auto;
+/* Two-column body: narrative left, dashboard right — fills viewport */
+.body {
+  position: fixed;
+  top: 2.75rem; /* below header */
+  bottom: 1.75rem; /* above footer */
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
 }
 
-.locationHeader {
-  margin-bottom: 2rem;
+/* Left column: terminal narrative + input */
+.narrative {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid
+    color-mix(in srgb, var(--color-medium) 20%, transparent);
+  background-color: var(--screen-black);
+  overflow: hidden;
+}
+
+.narrativeScroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 1rem 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.narrativeTitle {
+  font-size: 0.7rem;
+  color: var(--color-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0.75rem 1rem 0.25rem;
   border-bottom: 1px solid
     color-mix(in srgb, var(--color-medium) 10%, transparent);
-  padding-bottom: 1rem;
+}
+
+/* Right column: dashboard */
+.dashboard {
+  overflow-y: auto;
+  padding: 1.5rem 2rem;
+  background-color: var(--screen-edge);
+}
+
+/* Location header inside dashboard */
+.locationHeader {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--color-medium) 10%, transparent);
+  padding-bottom: 0.75rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -70,7 +110,7 @@
 }
 
 .locationName {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 900;
   text-transform: uppercase;
   color: var(--color-bright);
@@ -85,47 +125,47 @@
 .contentGrid {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .panel {
   background-color: var(--screen-dark);
   border: 1px solid color-mix(in srgb, var(--color-medium) 10%, transparent);
-  padding: 1.5rem;
+  padding: 1.25rem;
 }
 
 .panelTitle {
   color: var(--color-bright);
-  margin-bottom: 1rem;
-  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
 }
 
 .panelText {
   color: var(--color-medium);
   line-height: 1.5;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .capitalDisplay {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   border-top: 1px solid color-mix(in srgb, var(--color-medium) 20%, transparent);
-  padding-top: 1.5rem;
+  padding-top: 1rem;
 }
 
 .capitalRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .capitalLabel {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   opacity: 0.7;
 }
 
 .capitalValue {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   color: var(--color-bright);
 }
 
@@ -138,10 +178,10 @@
 .dataTableHeader {
   display: grid;
   grid-template-columns: 0.5fr 3fr 2fr 2fr;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
   border-bottom: 1px solid
     color-mix(in srgb, var(--color-medium) 20%, transparent);
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: bold;
   color: var(--color-bright);
   letter-spacing: 0.15em;
@@ -151,7 +191,7 @@
 .dataTableRow {
   display: grid;
   grid-template-columns: 0.5fr 3fr 2fr 2fr;
-  padding: 1rem;
+  padding: 0.6rem 1rem;
   align-items: center;
   border-bottom: 1px solid
     color-mix(in srgb, var(--color-medium) 10%, transparent);
@@ -167,39 +207,38 @@
 }
 
 .dataTableName {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--color-bright);
 }
 
 .dataTableSub {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   opacity: 0.6;
 }
 
 .dataTablePrice {
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .dataTableValue {
   text-align: right;
   color: var(--color-bright);
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
-/* Input prompt area */
+/* Input prompt area — used in narrative column */
 .promptArea {
-  margin-top: 2rem;
-  background-color: var(--screen-edge);
-  padding: 2rem;
-  border-left: 4px solid var(--color-bright);
+  padding: 0.75rem 1rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-medium) 20%, transparent);
+  background-color: color-mix(in srgb, var(--screen-dark) 50%, transparent);
 }
 
 .promptText {
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   color: var(--color-bright);
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.3rem;
 }
 
 .promptInput {
@@ -216,11 +255,20 @@
   padding: 0;
 }
 
-/* Terminal output in game */
-.terminalArea {
-  flex: 1;
-  overflow-y: auto;
-  padding: 1rem 0;
+/* Dashboard prompt — for prompts that appear in the dashboard */
+.dashboardPrompt {
+  margin-top: 1rem;
+  padding: 1rem 1.5rem;
+  background-color: var(--screen-edge);
+  border-left: 4px solid var(--color-bright);
+}
+
+.dashboardPromptText {
+  font-size: 1rem;
+  color: var(--color-bright);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 
 .footer {
@@ -244,20 +292,6 @@
   gap: 1.5rem;
 }
 
-.footerLink {
-  color: var(--color-dim);
-  text-decoration: none;
-  background: none;
-  border: none;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: pointer;
-}
-
-.footerLink:hover {
-  color: var(--color-bright);
-}
-
 .footerActive {
   color: var(--color-bright);
   font-weight: bold;
@@ -267,32 +301,33 @@
 .statusGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
 }
 
 .statusPanel {
   background-color: var(--screen-dark);
   border: 1px solid color-mix(in srgb, var(--color-medium) 10%, transparent);
-  padding: 1rem;
+  padding: 0.75rem;
 }
 
 .statusPanelTitle {
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   color: var(--color-dim);
   letter-spacing: 0.1em;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .statusPanelValue {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--color-bright);
 }
 
 .statusRow {
   display: flex;
   justify-content: space-between;
-  padding: 0.25rem 0;
+  padding: 0.15rem 0;
+  font-size: 0.85rem;
 }
 
 .statusLabel {
@@ -304,6 +339,14 @@
 }
 
 @media (max-width: 768px) {
+  .body {
+    grid-template-columns: 1fr;
+  }
+
+  .narrative {
+    display: none;
+  }
+
   .contentGrid {
     grid-template-columns: 1fr;
   }
@@ -314,9 +357,5 @@
 
   .headerNav {
     display: none;
-  }
-
-  .main {
-    padding: 4rem 1rem 3rem;
   }
 }
