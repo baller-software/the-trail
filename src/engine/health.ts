@@ -12,7 +12,7 @@ function healthFromIndex(index: number): HealthStatus {
 }
 
 /**
- * Calculate health change based on rations, weather, clothing, and rest.
+ * Calculate health change based on food, rations, weather, clothing, and rest.
  * Returns the new HealthStatus.
  */
 export function updateHealth(
@@ -21,12 +21,18 @@ export function updateHealth(
   weather: Weather,
   clothing: number,
   isResting: boolean,
+  food: number = Infinity,
 ): HealthStatus {
   let idx = healthIndex(currentHealth)
 
-  // Ration effects
-  if (rations === 'filling') idx = Math.max(0, idx - 1) // improve
-  if (rations === 'bareBones') idx++ // worsen
+  // Starvation — no food is immediately dangerous
+  if (food <= 0) {
+    idx += 2 // rapid health decline
+  } else if (rations === 'filling') {
+    idx = Math.max(0, idx - 1) // improve
+  } else if (rations === 'bareBones') {
+    idx++ // worsen
+  }
 
   // Weather effects
   if ((weather === 'cold' || weather === 'snowy') && clothing < 3) {
@@ -96,7 +102,10 @@ export function checkGameEndConditions(state: GameState): {
     return { isGameOver: true, reason: 'allDead' }
   }
 
-  if (state.supplies.food <= 0 && state.party.health === 'veryPoor') {
+  if (
+    state.supplies.food <= 0 &&
+    (state.party.health === 'poor' || state.party.health === 'veryPoor')
+  ) {
     return { isGameOver: true, reason: 'noFood' }
   }
 

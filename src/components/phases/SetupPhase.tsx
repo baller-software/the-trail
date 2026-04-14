@@ -45,10 +45,6 @@ export function SetupPhase() {
           },
         ],
       })
-      dispatch({
-        type: 'BUY_SUPPLIES',
-        payload: { money: -STARTING_BUDGET },
-      })
     }
   }, [dispatch])
 

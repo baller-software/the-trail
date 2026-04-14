@@ -12,7 +12,7 @@ export function createInitialState(): GameState {
     rations: 'filling',
     weather: 'cool',
     supplies: {
-      money: 0,
+      money: 700,
       food: 0,
       ammunition: 0,
       clothing: 0,

@@ -90,6 +90,7 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         weather,
         state.supplies.clothing,
         false,
+        newFood,
       )
 
       let newParty = { ...state.party, health: newHealth }
@@ -177,17 +178,18 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
     }
 
     case 'REST': {
+      const aliveCount = getAliveCount(state)
+      const foodConsumed = calculateFoodConsumed(state.rations, aliveCount)
+      const newFood = Math.max(0, state.supplies.food - foodConsumed)
+      const { month, day } = advanceDate(state.month, state.day)
       const newHealth = updateHealth(
         state.party.health,
         state.rations,
         state.weather,
         state.supplies.clothing,
         true,
+        newFood,
       )
-      const aliveCount = getAliveCount(state)
-      const foodConsumed = calculateFoodConsumed(state.rations, aliveCount)
-      const newFood = Math.max(0, state.supplies.food - foodConsumed)
-      const { month, day } = advanceDate(state.month, state.day)
 
       return {
         ...state,

@@ -32,7 +32,7 @@ describe('createInitialState', () => {
   it('starts with zero supplies', () => {
     const state = createInitialState()
 
-    expect(state.supplies.money).toBe(0)
+    expect(state.supplies.money).toBe(700)
     expect(state.supplies.food).toBe(0)
     expect(state.supplies.ammunition).toBe(0)
     expect(state.supplies.clothing).toBe(0)
