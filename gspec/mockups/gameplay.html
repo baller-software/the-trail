@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OREGON_TRAIL_OS_V1.0 - GENERAL_STORE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;family=VT323&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#022200",
+                    "on-background": "#e5e2e1",
+                    "on-primary": "#043900",
+                    "on-primary-fixed": "#022200",
+                    "on-surface": "#e5e2e1",
+                    "background": "#0A0A0A",
+                    "tertiary": "#4ce332",
+                    "surface-container": "#201f1f",
+                    "on-surface-variant": "#bccbb2",
+                    "inverse-surface": "#e5e2e1",
+                    "surface-container-highest": "#353534",
+                    "error-container": "#93000a",
+                    "on-secondary-container": "#127100",
+                    "on-primary-fixed-variant": "#085300",
+                    "surface-container-high": "#2a2a2a",
+                    "surface": "#131313",
+                    "on-error": "#690005",
+                    "on-secondary-fixed": "#022100",
+                    "secondary": "#edffe1",
+                    "on-tertiary-fixed-variant": "#085300",
+                    "error": "#ffb4ab",
+                    "outline-variant": "#3d4a37",
+                    "surface-tint": "#4ce332",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-primary-container": "#064800",
+                    "primary": "#4ce332",
+                    "surface-container-low": "#1c1b1b",
+                    "primary-fixed": "#78ff5c",
+                    "on-error-container": "#ffdad6",
+                    "primary-container": "#20c200",
+                    "surface-dim": "#131313",
+                    "surface-bright": "#3a3939",
+                    "secondary-fixed-dim": "#2de500",
+                    "on-secondary-fixed-variant": "#0b5300",
+                    "secondary-container": "#33ff00",
+                    "primary-fixed-dim": "#4ce332",
+                    "on-tertiary": "#043900",
+                    "on-secondary": "#053900",
+                    "tertiary-fixed-dim": "#4ce332",
+                    "tertiary-fixed": "#78ff5c",
+                    "surface-variant": "#353534",
+                    "tertiary-container": "#20c200",
+                    "inverse-primary": "#0e6e00",
+                    "on-tertiary-container": "#064800",
+                    "inverse-on-surface": "#313030",
+                    "secondary-fixed": "#79ff5a",
+                    "outline": "#86957e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["VT323", "monospace"],
+                    "body": ["VT323", "monospace"],
+                    "label": ["VT323", "monospace"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0A0A0A;
+            font-family: 'VT323', monospace;
+            overflow-x: hidden;
+            color: #20C200;
+        }
+        .crt-overlay {
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 9999;
+            background-size: 100% 4px, 3px 100%;
+        }
+        .phosphor-glow {
+            text-shadow: 0 0 5px rgba(51, 255, 0, 0.7);
+        }
+        .blinking-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background-color: #33FF00;
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0A0A0A; }
+        ::-webkit-scrollbar-thumb { background: #20C200; }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary-container selection:text-on-primary-container">
+<div class="crt-overlay"></div>
+<!-- TopAppBar -->
+<header class="bg-[#0A0A0A] text-[#20C200] font-['Space_Grotesk'] uppercase tracking-widest text-sm docked full-width top-0 border-b border-[#20C200]/20 flex justify-between items-center w-full px-6 py-4 max-w-[1920px] fixed top-0 z-50">
+<div class="text-xl font-bold text-[#33FF00] drop-shadow-[0_0_5px_#33FF00] phosphor-glow">OREGON_TRAIL_OS_V1.0</div>
+<nav class="hidden md:flex gap-8">
+<a class="text-[#20C200] opacity-70 hover:bg-[#33FF00] hover:text-[#0A0A0A] transition-all" href="#">MAP</a>
+<a class="text-[#20C200] opacity-70 hover:bg-[#33FF00] hover:text-[#0A0A0A] transition-all" href="#">INVENTORY</a>
+<a class="text-[#20C200] opacity-70 hover:bg-[#33FF00] hover:text-[#0A0A0A] transition-all" href="#">HUNT</a>
+<a class="text-[#33FF00] underline decoration-2 underline-offset-4" href="#">TRADE</a>
+<a class="text-[#20C200] opacity-70 hover:bg-[#33FF00] hover:text-[#0A0A0A] transition-all" href="#">REST</a>
+</nav>
+<div class="font-mono text-xs">SYSTEM_UPTIME: 00:42:15</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col p-4 pt-24 bg-[#131313] text-[#20C200] font-['Space_Grotesk'] text-xs font-mono docked full-height left-0 w-64 border-r border-[#20C200]/20 hidden lg:flex">
+<div class="mb-8 px-2">
+<div class="text-lg font-black text-[#20C200]">EXPEDITION_LEADER</div>
+<div class="text-[10px] opacity-60">STATUS: STABLE</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-3 p-3 text-[#20C200] hover:bg-[#20C200]/10 transition-transform active:scale-[0.98]">
+<span class="material-symbols-outlined text-sm">terminal</span>
+<span>LOGS</span>
+</div>
+<div class="flex items-center gap-3 p-3 text-[#20C200] hover:bg-[#20C200]/10 transition-transform active:scale-[0.98]">
+<span class="material-symbols-outlined text-sm">monitor_heart</span>
+<span>VITALS</span>
+</div>
+<div class="flex items-center gap-3 p-3 text-[#20C200] hover:bg-[#20C200]/10 transition-transform active:scale-[0.98]">
+<span class="material-symbols-outlined text-sm">map</span>
+<span>MAP_DATA</span>
+</div>
+<div class="flex items-center gap-3 p-3 bg-[#33FF00] text-[#0A0A0A] font-bold transition-transform active:scale-[0.98]">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">keyboard</span>
+<span>TERMINAL</span>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="lg:ml-64 pt-24 pb-20 px-8 min-h-screen">
+<!-- Data Header Signature -->
+<div class="mb-12 border-b border-[#20C200]/10 pb-4 flex justify-between items-end">
+<div>
+<div class="text-[#33FF00] text-sm mb-1 phosphor-glow">LOC://MATT_S_GENERAL_STORE</div>
+<h1 class="text-5xl font-black uppercase text-[#33FF00] phosphor-glow">INDEPENDENCE_MO</h1>
+</div>
+<div class="text-right font-mono text-[10px] text-[#20C200]/60">
+<p>REF_ID: 1971-MECC-ST01</p>
+<p>TEMP: 68°F | WIND: 4MPH SE</p>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-8">
+<!-- Left Column: Status & Clerk Message -->
+<div class="col-span-12 xl:col-span-4 space-y-8">
+<div class="bg-[#131313] p-6 border border-[#20C200]/10">
+<div class="text-[#33FF00] mb-4 text-lg">STORE_CLERK_COMMUNIQUE:</div>
+<p class="text-[#20C200] leading-relaxed text-xl">
+                        "HELLO THERE! SO YOU'RE GOING TO OREGON? I CAN FIX YOU UP WITH WHAT YOU NEED. THE LATER THE SEASON, THE HIGHER THE PRICES."
+                    </p>
+<div class="mt-8 border-t border-[#20C200]/20 pt-6">
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm opacity-70">CURRENT_CAPITAL:</span>
+<span class="text-2xl text-[#33FF00] phosphor-glow">$800.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm opacity-70">SESSION_BALANCE:</span>
+<span class="text-2xl text-[#33FF00] phosphor-glow">$800.00</span>
+</div>
+</div>
+</div>
+<div class="bg-[#0A0A0A] border border-[#20C200]/20 p-6 overflow-hidden relative">
+<img class="w-full h-48 object-cover grayscale brightness-50 contrast-150 mix-blend-screen opacity-40" data-alt="monochrome green tinted vintage general store interior with wooden shelves barrels and rustic atmosphere in CRT style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHyyGeY5WJrcSNVXwjGZpoTgJoonzGvUa9X7jBlgILRuDxVFmbdIcDBb3-B7XeqPXqm2Lt2FnY94AnEJ95etAKJW_FXsu-tLnIM6zj-AY25UXhYeIJ49lootevbed8hfOGJaAuyqErRWGD_iW68jqm2P2R4A77FWH482OxY9FpeuEFkngL8tNXAxQy6JWnYrkkrSX4ltScgRQ2Db5BCpjuyLkOuYt4krD9vqEtyZ4DxeOglcZ_E3V-kkcVuCp3op9evRcL3ITTA1c"/>
+<div class="absolute inset-0 bg-[#20C200]/10 pointer-events-none"></div>
+<div class="absolute bottom-2 left-2 text-[10px] bg-[#0A0A0A] px-2 py-1 uppercase">EST. 1843_VISUAL_FEED</div>
+</div>
+</div>
+<!-- Right Column: Inventory List -->
+<div class="col-span-12 xl:col-span-8">
+<div class="bg-[#131313] border border-[#20C200]/10">
+<div class="grid grid-cols-12 p-4 border-b border-[#20C200]/20 text-xs font-bold text-[#33FF00] tracking-widest bg-[#0E0E0E]">
+<div class="col-span-1">ID</div>
+<div class="col-span-5">DESCRIPTION</div>
+<div class="col-span-3">UNIT_PRICE</div>
+<div class="col-span-3 text-right">PURCHASED</div>
+</div>
+<!-- Inventory Rows -->
+<div class="divide-y divide-[#20C200]/10">
+<div class="grid grid-cols-12 p-6 items-center hover:bg-[#33FF00]/5 transition-colors group">
+<div class="col-span-1 text-[#20C200]/50">01</div>
+<div class="col-span-5">
+<div class="text-xl text-[#33FF00] group-hover:phosphor-glow">OXEN</div>
+<div class="text-xs opacity-60">2 PER YOKE</div>
+</div>
+<div class="col-span-3 text-lg font-mono">$40.00 / YOKE</div>
+<div class="col-span-3 text-right">
+<span class="text-[#33FF00] text-xl">[ 0 ]</span>
+</div>
+</div>
+<div class="grid grid-cols-12 p-6 items-center hover:bg-[#33FF00]/5 transition-colors group">
+<div class="col-span-1 text-[#20C200]/50">02</div>
+<div class="col-span-5">
+<div class="text-xl text-[#33FF00] group-hover:phosphor-glow">FOOD</div>
+<div class="text-xs opacity-60">PER POUND</div>
+</div>
+<div class="col-span-3 text-lg font-mono">$0.20 / LB</div>
+<div class="col-span-3 text-right">
+<span class="text-[#33FF00] text-xl">[ 0 ]</span>
+</div>
+</div>
+<div class="grid grid-cols-12 p-6 items-center hover:bg-[#33FF00]/5 transition-colors group">
+<div class="col-span-1 text-[#20C200]/50">03</div>
+<div class="col-span-5">
+<div class="text-xl text-[#33FF00] group-hover:phosphor-glow">AMMUNITION</div>
+<div class="text-xs opacity-60">BOXES OF 20</div>
+</div>
+<div class="col-span-3 text-lg font-mono">$2.00 / BOX</div>
+<div class="col-span-3 text-right">
+<span class="text-[#33FF00] text-xl">[ 0 ]</span>
+</div>
+</div>
+<div class="grid grid-cols-12 p-6 items-center hover:bg-[#33FF00]/5 transition-colors group">
+<div class="col-span-1 text-[#20C200]/50">04</div>
+<div class="col-span-5">
+<div class="text-xl text-[#33FF00] group-hover:phosphor-glow">CLOTHING</div>
+<div class="text-xs opacity-60">SET OF WEAR</div>
+</div>
+<div class="col-span-3 text-lg font-mono">$10.00 / SET</div>
+<div class="col-span-3 text-right">
+<span class="text-[#33FF00] text-xl">[ 0 ]</span>
+</div>
+</div>
+<div class="grid grid-cols-12 p-6 items-center hover:bg-[#33FF00]/5 transition-colors group">
+<div class="col-span-1 text-[#20C200]/50">05</div>
+<div class="col-span-5">
+<div class="text-xl text-[#33FF00] group-hover:phosphor-glow">MISC_SPARES</div>
+<div class="text-xs opacity-60">AXLES, WHEELS, TONGUES</div>
+</div>
+<div class="col-span-3 text-lg font-mono">$10.00 / UNIT</div>
+<div class="col-span-3 text-right">
+<span class="text-[#33FF00] text-xl">[ 0 ]</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Prompt Footer -->
+<div class="mt-12 bg-[#0E0E0E] p-8 border-l-4 border-[#33FF00]">
+<div class="flex flex-col gap-6">
+<div class="text-2xl text-[#33FF00] phosphor-glow flex items-center gap-4">
+<span>&gt;</span>
+<span>HOW MUCH DO YOU WANT TO SPEND ON OXEN?</span>
+<span class="blinking-cursor"></span>
+</div>
+<div class="flex gap-4">
+<button class="bg-[#33FF00] text-[#0A0A0A] font-bold py-3 px-8 text-xl active:scale-[0.98] transition-transform">
+                                [ ENTER_VALUE ]
+                            </button>
+<button class="border border-[#20C200] text-[#20C200] py-3 px-8 text-xl hover:bg-[#20C200]/10 active:scale-[0.98] transition-transform">
+                                ( CANCEL )
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- System Progress/Loading simulation -->
+<div class="mt-16 text-center text-xs opacity-40 font-mono tracking-[0.5em]">
+            SIMULATING_ECONOMIC_TRANSACTION_LOAD... [████████████████░░░░░░] 74%
+        </div>
+</main>
+<!-- Footer -->
+<footer class="fixed bottom-0 w-full flex justify-between px-8 py-2 z-50 bg-[#0A0A0A] text-[#20C200] font-['Space_Grotesk'] text-[10px] tracking-tighter border-t border-[#20C200]/20 docked full-width bottom-0 no shadows">
+<div class="opacity-60">(C) 1971 MECC - SIMULATION_ACTIVE</div>
+<div class="flex gap-6">
+<a class="text-[#20C200]/50 hover:text-[#33FF00] active:animate-pulse" href="#">REBOOT</a>
+<a class="text-[#20C200]/50 hover:text-[#33FF00] active:animate-pulse" href="#">HELP</a>
+<a class="text-[#33FF00] active:animate-pulse font-bold" href="#">EXIT</a>
+</div>
+</footer>
+</body></html>
